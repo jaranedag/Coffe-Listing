@@ -7,6 +7,7 @@ import Cardprincipal from './components/card-principal';
 
 function App() {
   const [lista, setLista] = useState([]);
+  const [showAvailable, setShowAvailable] = useState(false)
 
   useEffect(() => {
     fetch(
@@ -20,6 +21,18 @@ function App() {
         console.log(error);
       });
   }, []);
+
+  const handleShowAll = () => {
+    setShowAvailable(false);
+  };
+
+  const handleShowAvailable = () => {
+    setShowAvailable(true);
+  };
+
+  const filteredList = showAvailable 
+  ? lista.filter((cafe) => cafe.available)
+  : lista;
 
   return (
     <div className='app-container'>
@@ -35,10 +48,14 @@ function App() {
       }}>
         <div className='cards-container row'>
           <div className='main-card d-flex justify-content-center mb-3'>
-            <Cardprincipal />
+            <Cardprincipal 
+            handleShowAll={handleShowAll}
+            handleShowAvailable={handleShowAvailable}
+            showAvailable={showAvailable}
+            />
           </div>
           <div className='row'>
-            {lista.map(cafe => (
+            {filteredList.map(cafe => (
               <div key={cafe.id} className='col-md-4 mb-3'>
                 <Card cafe={cafe} />
               </div>
