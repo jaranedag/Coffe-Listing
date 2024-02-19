@@ -1,5 +1,6 @@
 import React from "react";
 import starImage from "../img/Star.svg";
+import starImageFill from "../img/Star_fill.svg"
 
 export default function Card({ cafe }) {
   return (
@@ -12,9 +13,9 @@ export default function Card({ cafe }) {
           <p className="precio card-title " style={{fontSize: "0.75rem"}}>{cafe.price}</p>
         </div>
         <div className="caffe-vote d-flex">
-          <img className="star-vector" src={starImage} alt="" />
+          <img className="star-vector" src={cafe.votes > 0 ? starImageFill : starImage} alt="" />
           <h6 className="punctuation text-light">{cafe.rating !== null ? cafe.rating : "No ratings"} </h6>
-          <p className="points">({cafe.votes})</p>
+          <p className="points">({cafe.votes} votes)</p>
         </div>
       </div>
     </div>
