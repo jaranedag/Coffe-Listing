@@ -40,7 +40,7 @@ function App() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundImage: `url(${process.env.PUBLIC_URL + "bg-cafe.jpg"})`,
+        backgroundImage: `url(${process.env.PUBLIC_URL}/bg-cafe.jpg)`,
         width: "100%",
         height: "100vh",
         backgroundRepeat: "no-repeat",
